@@ -1,16 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Home from "./Home";
+import About from "./About";
+import Login from "./Login";
+import NavBar from "./NavBar";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-function Home() {
+function App() {
   return (
-    <div>
-      <h1>Home!</h1>
-    </div>
+    <>
+      <NavBar />
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
-function App() {
-  return <Home />;
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
